@@ -28,6 +28,14 @@ class PayWageController {
 
     @GetMapping("/{userId}")
     fun getUser(@PathVariable("userId") userId: Int): User? {
-        return userRepository.findById(userId)
+        return userRepository.findById(userId) ?: error("找不到")
     }
+
+    // 正则表达式验证 id
+    @GetMapping("/regex/{id:.+}")
+    fun regex(@PathVariable("id") id: Int){
+        println(id)
+    }
+
+
 }
